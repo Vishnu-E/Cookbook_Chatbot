@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Assistant</title>
+</head>
+<body>
+    <h1>Recipe Assistant</h1>
+    <form method="post">
+        <label for="url">Enter recipe URL:</label>
+        <input type="text" id="url" name="url"><br><br>
+        <label for="option">Select an option:</label>
+        <select id="option" name="option">
+            <option value="1">Ingredients</option>
+            <option value="2">Preparation Stepwise</option>
+            <option value="3">All Preparation Steps</option>
+            <option value="4">More</option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if ingredients %}
+        <h2>Ingredients:</h2>
+        <ul>
+        {% for ingredient in ingredients %}
+            <li>{{ ingredient }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if steps %}
+        <h2>Preparation Steps:</h2>
+        {% if step_wise %}
+            <div id="step-container">
+                <p id="step-text">{{ steps[0] }}</p>
+                <button id="prev-step" onclick="prevStep()">Previous Step</button>
+                <button id="next-step" onclick="nextStep()">Next Step</button>
+                <button id="reset-step" onclick="resetStep()">Reset</button>
+            </div>
+            <script>
+                let currentStep = 0;
+                function prevStep() {
+                    if (currentStep > 0) {
+                        currentStep--;
+                        document.getElementById('step-text').innerText = steps[currentStep];
+                    }
+                }
+                function nextStep() {
+                    if (currentStep < steps.length - 1) {
+                        currentStep++;
+                        document.getElementById('step-text').innerText = steps[currentStep];
+                    }
+                }
+                function resetStep() {
+                    currentStep = 0;
+                    document.getElementById('step-text').innerText = steps[currentStep];
+                }
+            </script>
+        {% else %}
+            <ol>
+            {% for step in steps %}
+                <li>{{ step }}</li>
+            {% endfor %}
+            </ol>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
