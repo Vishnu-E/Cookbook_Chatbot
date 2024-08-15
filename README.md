@@ -3,7 +3,7 @@ Jio Institute NLP Project 2: The goal of this Project is to design and build a s
 a useful data representation and (ii) features a (basic) conversational interface for user interaction.
 
 ## Group Members
-Abishek Sahu - 25PGAI0050  
+Abishek Sahoo - 25PGAI0050  
 Varsha Rai - 25PGAI0049  
 Vishnu E - 25PGAI0145
 
